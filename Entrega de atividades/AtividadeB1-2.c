@@ -1,13 +1,13 @@
 #include <stdio.h>
 
-void calc(int *preco,int *desconto,float *valorfinal){
+void calc(int *preco,int *desconto,float *resultado){
 
-  *valorfinal = *preco - (*preco * *desconto/100.0);
+  *resultado = *preco - (*preco * *desconto/100.0);
 }
 
 int preco;
 int desconto;
-float valorfinal;
+float resultado;
 
 int main(void) {
   
@@ -17,9 +17,9 @@ int main(void) {
   printf("digite o desconto em porcentagem: \n");
   scanf("%d", &desconto);
 
-  calc(&preco, &desconto, &valorfinal);
+  calc(&preco, &desconto, &resultado);
 
-  printf("preco %d\n deconto aplicado: %d%%\n  e valor final: %.2f", preco,desconto, valorfinal);
+  printf("preco %d\n deconto aplicado: %d%%\n  e valor final: %.2f", preco,desconto, resultado);
 
   return 0;
 }
