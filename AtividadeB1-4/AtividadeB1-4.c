@@ -2,8 +2,8 @@
 
 /*---------------------------------------------------------------------*/
 /*     FATEC-AR                      Estrutura de Dados                */ 
-/*     Lab9 :  Listas - Estrutura de Arranjos                          */
-/*     Prof. Carlos Henrique Veríssimo                                 */
+/*     Lab9 :  Listas - Estrutura de dados                             */
+/*     Henrique Augusto Pais Canosa                                    */
 /*---------------------------------------------------------------------*/
 /* Programa: listaLigadaNo.C                                           */
 /* Função: cria uma lista que recebe as função de entrada e processos:
