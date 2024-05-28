@@ -1,6 +1,6 @@
 /* ----------------------------------------------------------------**
  * FATEC-São Caetano do Sul Estrutura de Dados *
- * Atividade B2-6 - Implemementar arry e inceriri dados no meio dela *
+ * Atividade B2-6 - Implemementar fila e inceriri dados no meio dela *
  * Para: Prof Veríssimo * * Objetivo: conceitos de fila *
  * Autor: Henrique * * Data:27/05/2024 *
  * *----------------------------------------------------------------**/
