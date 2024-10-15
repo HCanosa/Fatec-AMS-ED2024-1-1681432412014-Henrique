@@ -82,26 +82,60 @@ def mescla_por_validade(esquerda, direita):
     resultado.extend(esquerda or direita)
     return resultado
 
-# Exemplo de uso
-produtos = [
-   Produto("Arroz", 20.50, "10/10/2024", 100),
-    Produto("Feijão", 9.30, "12/09/2024", 200),
-    Produto("Macarrão", 4.75, "01/11/2024", 150),
-    Produto("Azeite", 15.00, "05/12/2024", 80)
-]
+def ordena_por_quantidade(produtos):
+    if len(produtos) <= 1:
+        return produtos
+    else:
+        meio = len(produtos) // 2
+        esquerda = ordena_por_quantidade(produtos[:meio])
+        direita = ordena_por_quantidade(produtos[meio:])
 
-print("Ordenado por nome:")
-produtos_ordenados_nome = ordena_por_nome(produtos)
-print(produtos_ordenados_nome)
+        return mescla_por_quantidade(esquerda, direita)
 
-print("\nOrdenado por preço:")
-produtos_ordenados_preco = ordena_por_preco(produtos)
-print(produtos_ordenados_preco)
+def mescla_por_quantidade(esquerda, direita):
+    resultado = []
+    while esquerda and direita:
+        if esquerda[0].validade < direita[0].validade:
+            resultado.append(esquerda.pop(0))
+        else:
+            resultado.append(direita.pop(0))
+    resultado.extend(esquerda or direita)
+    return resultado
 
-print("\nOrdenado por data de validade:")
-produtos_ordenados_validade = ordena_por_validade(produtos)
-print(produtos_ordenados_validade)
+def inserir_produtos():
+    produtos = []
+    num_produtos = int(input("Quantos produtos deseja inserir? "))
 
-print("\nOrdenado por quantidade:")
-produtos_ordenados_quantidade = ordena_por_validade(produtos)
-print(produtos_ordenados_validade)
+    for _ in range(num_produtos):
+        nome = input("Nome do produto: ")
+        preco = float(input("Preço do produto: "))
+        validade = input("Data de validade (dd/mm/yyyy): ")
+        quantidade = int(input("Quantidade do produto: "))
+        produtos.append(Produto(nome, preco, validade, quantidade))
+
+    return produtos
+
+produtos = inserir_produtos()
+
+print("\nEscolha o critério de ordenação:")
+print("1. Nome")
+print("2. Preço")
+print("3. Data de Validade")
+print("4. Quantidade")
+criterio = int(input("Digite o número do critério escolhido: "))
+
+if criterio == 1:
+    produtos_ordenados = ordena_por_nome(produtos)
+elif criterio == 2:
+    produtos_ordenados = ordena_por_preco(produtos)
+elif criterio == 3:
+    produtos_ordenados = ordena_por_validade(produtos)
+elif criterio == 4:
+    produtos_ordenados = ordena_por_quantidade(produtos)
+else:
+    print("Critério inválido. Ordenando por nome como padrão.")
+    produtos_ordenados = ordena_por_nome(produtos)
+
+print("\nProdutos ordenados:")
+for produto in produtos_ordenados:
+    print(produto)
